@@ -72,6 +72,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       registration.validacion(registration.userController, registration.passwordController, registration.nameController, registration.phoneController, context);
                   }, child:  Text('Registrarte')),
                 ),
+                SizedBox(height: 15,),
+                SizedBox(
+                  width: double.infinity,
+                  child: TextButton(
+                    onPressed: (){
+                      registration.login(context);
+                  }, child:  Text('¿Ya tienes una cuenta?')),
+                ),
                 SizedBox(height: 15,)
               ],
             ),

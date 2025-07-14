@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class Registration {
-  Registration({required this.ocultarTexto, required this.subIcono});
+class Login {
+  Login({required this.ocultarTexto, required this.subIcono});
   bool ocultarTexto;
   IconData subIcono;
   final userController = TextEditingController();
   final passwordController = TextEditingController();
-  final nameController = TextEditingController();
-  final phoneController = TextEditingController();
 
   void visible(){
     if(ocultarTexto == true){
@@ -20,41 +18,16 @@ class Registration {
       subIcono = Icons.remove_red_eye;
     }
   }
-  void login(BuildContext context){
+  void registrar(BuildContext context){
     context.goNamed(
-    'login',
+    'registration',
   );
   }
   void validacion(
     TextEditingController userController, 
     TextEditingController passwordController, 
-    TextEditingController nameController, 
-    TextEditingController phoneController,
     BuildContext context){
     final caracterEspecial = RegExp(r'[!@#$%^&*(),.?":{}|<>]');
-    if (nameController.text.isEmpty) {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text('Oops!'),
-            content: Text(
-              'El nombre no pueden quedar en blanco',
-            ),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  // Navigator.of(context).pop();
-                  context.pop();
-                },
-                child: Text('Entiendo'),
-              ),
-            ],
-          );
-        },
-      );
-      return;
-    }
     if (userController.text.isEmpty) {
       showDialog(
         context: context,
@@ -86,29 +59,6 @@ class Registration {
             title: Text('Oops!'),
             content: Text(
               'La contraseña no pueden quedar en blanco',
-            ),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  // Navigator.of(context).pop();
-                  context.pop();
-                },
-                child: Text('Entiendo'),
-              ),
-            ],
-          );
-        },
-      );
-      return;
-    }
-    if (phoneController.text.isEmpty) {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text('Oops!'),
-            content: Text(
-              'El telefono no pueden quedar en blanco',
             ),
             actions: [
               TextButton(
