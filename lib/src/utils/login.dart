@@ -25,7 +25,8 @@ class Login {
   }
   void validacion(
     TextEditingController userController, 
-    TextEditingController passwordController, 
+    TextEditingController passwordController,
+    List<Map>? usuarios,
     BuildContext context){
     final caracterEspecial = RegExp(r'[!@#$%^&*(),.?":{}|<>]');
     if (userController.text.isEmpty) {
@@ -143,8 +144,61 @@ class Login {
       );
       return;
     }
-  context.goNamed(
-    'home',
-  );
+    if(usuarios != null){    
+      for(int i = 0; i < usuarios.length; i++){
+          TextEditingController usuario = usuarios[i]['usuario'];
+          TextEditingController clave = usuarios[i]['clave'];
+          if(usuario.text == userController.text){
+            if(clave.text == passwordController.text){
+              context.goNamed(
+                'home',
+              );
+              return;
+            }else{
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text('Oops!'),
+                    content: Text(
+                      'La contraseña es incorrecta',
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          // Navigator.of(context).pop();
+                          context.pop();
+                        },
+                        child: Text('Entiendo'),
+                      ),
+                    ],
+                  );
+                },
+              );
+              return;
+            }
+          }
+      }
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Oops!'),
+            content: Text(
+              'El usuario no existe',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  // Navigator.of(context).pop();
+                  context.pop();
+                },
+                child: Text('Entiendo'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 }

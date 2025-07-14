@@ -194,7 +194,13 @@ class Registration {
       return;
     }
   context.goNamed(
-    'home',
+    'login',
+    extra:{
+      'usuario': userController,
+      'clave': passwordController,
+      'nombre': nameController,
+      'telefono': phoneController
+    }
   );
   }
 }

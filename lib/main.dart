@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
             name: 'home',
             path: '/home',
             builder: (context, state){
+              
               return const HomePage();
             }
           ),
@@ -33,7 +34,11 @@ class MyApp extends StatelessWidget {
             name: 'login',
             path: '/login',
             builder: (context, state){
-              return const LoginPage();
+            final Map extra;
+              state.extra != null ? extra = state.extra as Map : extra = {};
+              List<Map> usuarios = [];
+              usuarios.add(extra);
+              return LoginPage(usuarios: usuarios,);
             }
           )
         ]

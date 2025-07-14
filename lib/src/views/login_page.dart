@@ -3,16 +3,20 @@ import 'package:tarea_2_1/src/widgets/text_field_widget.dart';
 import 'package:tarea_2_1/src/utils/login.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({super.key, this.usuarios});
 
+  final List<Map>? usuarios;
+  
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
+  
   Login login = Login(ocultarTexto: true, subIcono: Icons.remove_red_eye);
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -21,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               //mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 15,),
+                Spacer(),
                 Text(
                   'Iniciar sesión',
                   style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
@@ -46,12 +50,13 @@ class _LoginPageState extends State<LoginPage> {
                     login.visible();
                   },
                 ),
-                
+                SizedBox(height: 15,),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: (){
-                      login.validacion(login.userController, login.passwordController, context);
+                      login.validacion(login.userController, login.passwordController, widget.usuarios, context);
+
                   }, child:  Text('Iniciar sesión')),
                 ),
                 SizedBox(

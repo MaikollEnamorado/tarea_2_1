@@ -20,31 +20,34 @@ class _RegistrationPageState extends State<RegistrationPage> {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Center(
             child: Column(
-              //mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 15,),
+                Spacer(),
                 Text(
                   'Crea una cuenta',
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                  
                 ),
                 Text(
                   'Es facil y rapido',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
                 ),
-                Divider(),
+                SizedBox(
+                  height: 20,
+                  child: Divider()),
                 TextFieldWidget(
                   controller: registration.nameController,
                   hintTexto: 'Ingrese su nombre completo', 
                   preIcono: Icons.person_outlined,
                 ),
-                SizedBox(height: 15,),
+                SizedBox(height: 10,),
                 TextFieldWidget(
                   controller: registration.userController,
                   hintTexto: 'Ingrese su correo electronico', 
                   preIcono: Icons.email_outlined,
                   tipoTeclado: TextInputType.emailAddress,
                 ),
-                SizedBox(height: 15,),
+                SizedBox(height: 10,),
                 TextFieldWidget(
                   controller: registration.passwordController,
                   hintTexto: 'Ingrese su contraseña', 
@@ -57,14 +60,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     registration.visible();
                   },
                 ),
-                SizedBox(height: 15,),
+                SizedBox(height: 10,),
                 TextFieldWidget(
                   controller: registration.phoneController,
                   hintTexto: 'Ingrese su telefono', 
                   preIcono: Icons.phone,
                   tipoTeclado: TextInputType.phone,
                 ),
-                Spacer(),
+                SizedBox(height: 10,),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
@@ -72,7 +75,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       registration.validacion(registration.userController, registration.passwordController, registration.nameController, registration.phoneController, context);
                   }, child:  Text('Registrarte')),
                 ),
-                SizedBox(height: 15,),
+                
+                Spacer(),
                 SizedBox(
                   width: double.infinity,
                   child: TextButton(
@@ -80,7 +84,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       registration.login(context);
                   }, child:  Text('¿Ya tienes una cuenta?')),
                 ),
-                SizedBox(height: 15,)
+                
+                SizedBox(height: 10,)
               ],
             ),
           ),
